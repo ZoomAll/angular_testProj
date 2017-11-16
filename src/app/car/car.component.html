@@ -5,11 +5,13 @@
       class="btn btn-sm btn-primary"
       [disabled]="car.isSold"
       (click)="onAction('buy')"
-    >Купить</button>
+    >Купить
+    </button>
     <button
       class="btn btn-sm btn-default"
       [disabled]="!car.isSold"
       (click)="onAction('return')"
-    >Вернуть</button>
+    >Вернуть
+    </button>
   </div>
 </div>
