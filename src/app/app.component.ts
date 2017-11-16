@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -13,4 +14,8 @@ export class AppComponent {
     type: 'no',
     text: 'Нет'
   }];
+
+  submitForm(form: NgForm) {
+    console.log(form);
+  }
 }
