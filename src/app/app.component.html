@@ -1,5 +1,5 @@
 <div class="col-xs-8 col-xs-offset-2">
-  <form (ngSubmit)="submitForm(myLoginForm)" #myLoginForm="ngForm">
+  <form (ngSubmit)="submitForm()" #myLoginForm="ngForm">
     <div ngModelGroup="user" #user="ngModelGroup">
       <div class="form-group" [ngClass]="{'has-error': myEmail.invalid && myEmail.touched}">
         <label>Email</label>
@@ -11,6 +11,7 @@
                #myEmail="ngModel"
         >
         <p *ngIf="myEmail.invalid && myEmail.touched">Введите корректный e-mail</p>
+        <button (click)="addRandEmail()" type="button" class="btn btn-primary">add random email</button>
       </div>
       <div class="form-group" [ngClass]="{'has-error': myPass.invalid && myPass.touched}">
         <label>Пароль</label>
@@ -50,4 +51,10 @@
     </button>
 
   </form>
+
+  <div *ngIf="isSubmited">
+    <pre>
+      {{formData | json }}
+    </pre>
+  </div>
 </div>
