@@ -13,7 +13,11 @@
         <input type="password" class="form-control"
                formControlName="pass"
         >
-        <p *ngIf="isPassInvalid()">Пароль должен быть корректным</p>
+        <p *ngIf="isPassInvalid()">
+          <span *ngIf="form.get('user.pass').errors['required']">Пароль должен быть корректным</span>
+          <br>
+          <span *ngIf="form.get('user.pass').errors['lengthError']">Длина пароля должна быть больше {{minPassLength-1}} симв.</span>
+        </p>
       </div>
     </div>
     <div class="form-group">
