@@ -2,20 +2,25 @@
   <form (ngSubmit)="submitForm(myLoginForm)" #myLoginForm="ngForm">
     <div class="form-group">
       <label>Email</label>
-      <input type="text" class="form-control"
-             ngModel name="email"
+      <input type="email" class="form-control"
+             ngModel
+             required
+             name="email"
+             email
       >
     </div>
     <div class="form-group">
       <label>Пароль</label>
       <input type="password" class="form-control"
              ngModel name="pass"
+             required
       >
     </div>
     <div class="form-group">
       <label>Выберите страну</label>
       <select class="form-control"
               ngModel name="country"
+              required
       >
         <option value="ru">Россия</option>
         <option value="by">Белоруссия</option>
@@ -26,10 +31,14 @@
       <label>
         <input type="radio" [value]="ans.type"
                ngModel name="answer"
+               required
         > {{ans.text}}
       </label>
     </div>
-    <button class="btn btn-success" type="submit">Сохранить</button>
+    <button class="btn btn-success" type="submit"
+            [disabled]="!myLoginForm.valid"
+    >Сохранить
+    </button>
 
   </form>
 </div>
