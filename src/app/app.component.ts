@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -17,14 +17,26 @@ export class AppComponent {
   }];
 
   form: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    pass: new FormControl(''),
+    user: new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', Validators.required),
+    }),
     country: new FormControl('by'),
     answer: new FormControl('yes'),
   });
 
   onSubmit() {
     console.log('submited!', this.form);
+  }
+
+  isEmailInvalid(): boolean {
+    const email = this.form.get('user.email');
+    return email.invalid && email.touched;
+  }
+
+  isPassInvalid(): boolean {
+    const pass = this.form.get('user.pass');
+    return pass.invalid && pass.touched;
   }
 
 }
