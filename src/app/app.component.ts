@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+
   answers = [{
     type: 'yes',
     text: 'Да'
@@ -13,4 +15,16 @@ export class AppComponent {
     type: 'no',
     text: 'Нет'
   }];
+
+  form: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    pass: new FormControl(''),
+    country: new FormControl('by'),
+    answer: new FormControl('yes'),
+  });
+
+  onSubmit() {
+    console.log('submited!', this.form);
+  }
+
 }
