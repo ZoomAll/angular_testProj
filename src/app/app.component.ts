@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {reject} from "q";
-
 
 @Component({
   selector: 'app-root',
